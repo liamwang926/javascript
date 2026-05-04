@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>test</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+		
+		<style>
+		#gInput:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+        </style>
+	
+		<script>
+		$(function(){
+			let target = Math.floor(Math.random() * 100) + 1;
+			let count = 0;
+
+			$('#gBtn').click(function() {
+			    count++;
+			    $('#gCount').text(count);
+			    
+			    let val = $('#gInput').val();
+			    if (val == target) {
+			        $('#gMsg').text("🎉 答對了！").css('color', '#10b981');
+			    } else if (val < target) {
+			        $('#gMsg').text("🔼 太小了，再高一點").css('color', '#f59e0b');
+			    } else {
+			        $('#gMsg').text("🔽 太大了，再低一點").css('color', '#ef4444');
+			    }
+			});
+		});
+		 
+		</script>
+	</head>
+		<body> 
+
+			 <div class="flex flex-col items-center gap-4">
+        <p class="text-gray-600">猜 1~100 之間的數字：</p>
+        <div class="flex gap-2">
+            <input type="number" id="gInput" class="border-2 border-blue-100 rounded-xl px-4 py-2 w-32 text-center focus:border-blue-400 outline-none transition-all">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-xl shadow-md transition-all active:scale-95" id="gBtn">送出</button>
+        </div>
+        <p class="font-bold" id="gMsg">請輸入數字...</p>
+        <p class="text-sm text-gray-400 text-center">嘗試次數：<span id="gCount" class="text-blue-500 font-bold">0</span></p>
+    </div>
+
+        </body>	
+
+        
+	
+</html>
